@@ -14,8 +14,15 @@ from rest_framework.permissions import IsAuthenticated
 
 
 
-def home(request):
-    return render(request,'base.html')
+@api_view(['GET'])
+def apiOverview(request):
+    api_urls = {
+        'search_ifsc':'/search_ifsc/',
+        'searchBankName$city':'/searchDist/',
+        'pagination':'/BankListSearchView/'
+
+    }
+    return Response(api_urls)
 
 @api_view(['GET'])
 def search_ifsc(request):
